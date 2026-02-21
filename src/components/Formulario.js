@@ -1,7 +1,7 @@
-import { Text, View } from 'react-native';
+import { Text, View } from "react-native";
 export default function Formulario() {
     return (
-        <View style={styles.container}>
+        <View>
             <Text>Este es el formulario de la app</Text>
         </View>
     );
