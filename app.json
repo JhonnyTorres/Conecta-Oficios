@@ -4,7 +4,7 @@
     "slug": "Conecta-Oficios",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Barcelona.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
