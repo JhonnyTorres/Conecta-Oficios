@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Formulario from './src/components/Formulario';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Este es el home de la app</Text>
+      <Text>Hola</Text>
+      <Text>Jonathan</Text>
       <Formulario />
       <StatusBar style="auto" />
     </View>
@@ -15,7 +16,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#11b111',
+    backgroundColor: '#27bdd1',
     alignItems: 'center',
     justifyContent: 'center',
   },
