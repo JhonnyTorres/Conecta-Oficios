@@ -1,23 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import Formulario from './src/components/Formulario';
+import AppNavigator from './navigation/AppNavigator';
+import AppProvider from './';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hola</Text>
-      <Text>Jonathan</Text>
-      <Formulario />
-      <StatusBar style="auto" />
-    </View>
+    <AppProvider>
+      <NavigationContainer>
+        <AppNavigator />
+        <StatusBar />
+      </NavigationContainer>
+    </AppProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#27bdd1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
