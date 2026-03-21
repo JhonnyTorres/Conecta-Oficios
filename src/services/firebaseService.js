@@ -16,6 +16,4 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export default app;
-
 console.log(process.env.EXPO_PUBLIC_FIREBASE_API_KEY);

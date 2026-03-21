@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SplashScreen } from '../src/screens/SplashScreen';
-import { RegisterScreen } from '../src/screens/auth/RegisterScreen';
-import { LoginScreen } from '../src/screens/auth/LoginScreen';
+import SplashScreen from '../src/screens/SplashScreen';
+import RegisterScreen from '../src/screens/auth/RegisterScreen';
+import LoginScreen from '../src/screens/auth/LoginScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-const profileStack = createNativeStackNavigator();
+const ProfileStack = createNativeStackNavigator();
 
 const TabNavigator = () => {
     const { user } = useAuth();
@@ -60,42 +60,46 @@ const TabNavigator = () => {
 const AuthNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Splash" component={SplashScreen} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
-            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name='Splash' component={SplashScreen} />
+            <Stack.Screen name='Register' component={RegisterScreen} />
+            <Stack.Screen name='Login' component={LoginScreen} />
         </Stack.Navigator>
-    );
+    )
 }
 
 const AppNavigator = () => {
     const [user, setUser] = useState(null);
-    const [isloading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
+        const unsuscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);
             setIsLoading(false);
         });
-        return () => unsubscribe();
+        return () => unsuscribe();
     }, []);
 
     const authContextValue = {
         user,
         setUser,
-        isloading,
+        isLoading,
         setIsLoading,
     };
 
-    if (isloading) {
-        return <SplashScreen />; //el null se reemplazara por el splash screen
+    if (isLoading) {
+        return <SplashScreen />;//el null se reemplazará por el splash screen
     }
+
     return (
         <AuthContext.Provider value={authContextValue}>
-            <Stack.Navigator initialRouteName="">
-                <Stack.Screen name="Splash" component={SplashScreen} />
-                <Stack.Screen name="Register" component={RegisterScreen} />
-                <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Navigator initialRouteName='Splash'>
+                <Stack.Screen name='Splash' component={SplashScreen} />
+                <Stack.Screen name='Register' component={RegisterScreen} />
+                <Stack.Screen name='Login' component={LoginScreen} />
+
             </Stack.Navigator>
         </AuthContext.Provider>
     );
 }
+
+export default AppNavigator;
