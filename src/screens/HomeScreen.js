@@ -17,6 +17,6 @@ const styles = {
         backgroundColor: colors.principal,
     },
 };
-S
+
 
 export default HomeScreen;
